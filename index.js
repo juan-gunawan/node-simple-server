@@ -1,12 +1,14 @@
 // Mock JSON
 const mock = require('./mocks/oneway');
+const cors = require('cors'); 
 
 const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/mock', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+app.use(cors())
+
+app.post('/mock', (req, res) => {
   res.send(mock);
 });
 
